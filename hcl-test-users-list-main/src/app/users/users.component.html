@@ -2,12 +2,12 @@
   <div class="control-panel">
     <form>
       <label class="select">Select column to filter:
-        <select>
+        <select (change)='columnFilter($event.target)'>
           <option *ngFor="let opt of options" [value]="opt.value">{{ opt.text }}</option>
         </select>
       </label>
       <label class="input">Enter filter keywords:
-        <input type="text" placeholder="filter keywords go here..." />
+        <input type="text" placeholder="filter keywords go here..." [value]='selctdSerchval' (keyup)='filterTable($event.target)'/>
       </label>
     </form>
   </div>
@@ -23,12 +23,12 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>John Doe</td>
-          <td>jdoe</td>
-          <td>john.doe@jd.com</td>
-          <td>024-648-3804</td>
-          <td>jd.com</td>
+        <tr *ngFor="let user of usersList[0]">
+          <td>{{user.name}}</td>
+          <td>{{user.username}}</td>
+          <td>{{user.email}}</td>
+          <td>{{user.phone}}</td>
+          <td>{{user.website}}</td>
         </tr>
       </tbody>
     </table>
